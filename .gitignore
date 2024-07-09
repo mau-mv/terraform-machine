@@ -1,0 +1,30 @@
+# Ignore Terraform state files
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Ignore AWS folder
+aws/
+
+# Ignore Azure folder
+azure/
+
+# Ignore other Terraform-related files
+crash.log
+*.tfvars
+*.tfvars.json
+.terraformrc
+terraform.rc
+
+# Ignore other sensitive files
+*.pem
+*.key
+*.crt
+*.p12
+*.cer
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.swp
+
