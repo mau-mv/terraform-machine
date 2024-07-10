@@ -51,6 +51,12 @@ resource "aws_subnet" "secondary" {
   }
 }
 
+resource "aws_subnet" "trigger_test"{
+  vpc_id = aws_vpc.main.id
+  cidr_block = "10.0.4.0/24"
+  availability_zone = "us-east-1b"
+}
+
 resource "aws_s3_bucket_policy" "example" {
   bucket = module.aws_infrastructure.s3_bucket_name
 
