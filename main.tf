@@ -5,12 +5,6 @@ terraform {
     region         = "us-east-1"
     dynamodb_table = "terraform-lock"
   }
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "3.47.0"
-    }
-  }
 }
 
 provider "aws" {
