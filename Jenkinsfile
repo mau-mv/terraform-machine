@@ -18,6 +18,7 @@ pipeline {
         }
         stage('Initialize Terraform') {
             steps {
+		sh 'pwd'
                 sh 'terraform init -upgrade'
             }
         }
