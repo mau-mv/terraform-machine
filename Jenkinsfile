@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     environment {
-	AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-        AZURE_CLIENT_ID = credentials('azure-client-id')
-        AZURE_CLIENT_SECRET = credentials('azure-client-secret')
-        AZURE_SUBSCRIPTION_ID = credentials('azure-subscription-id')
-        AZURE_TENANT_ID = credentials('azure-tenant-id')    
+	AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
+        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+        ARM_CLIENT_ID = credentials('azure-client-id')
+        ARM_CLIENT_SECRET = credentials('azure-client-secret')
+        ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
+        ARM_TENANT_ID = credentials('azure-tenant-id')    
 	}
 
     stages {
@@ -18,7 +18,8 @@ pipeline {
         }
         stage('Initialize Terraform') {
             steps {
-                sh 'terraform init'
+		sh 'pwd'
+                sh 'terraform init -upgrade'
             }
         }
         stage('Validate Terraform') {
@@ -28,12 +29,12 @@ pipeline {
         }
         stage('Plan Terraform') {
             steps {
-                sh 'terraform plan -out=tfplan'
+                sh 'terraform plan'
             }
         }
         stage('Apply Terraform') {
             steps {
-                sh 'terraform apply -auto-approve tfplan'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
