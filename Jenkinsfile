@@ -2,9 +2,13 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = credentials('aws-credentials')
-	AZURE_CREDENTIALS = credentials('azure-credentials')
-    }
+	AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+        AZURE_CLIENT_ID = credentials('azure-client-id')
+        AZURE_CLIENT_SECRET = credentials('azure-client-secret')
+        AZURE_SUBSCRIPTION_ID = credentials('azure-subscription-id')
+        AZURE_TENANT_ID = credentials('azure-tenant-id')    
+	}
 
     stages {
         stage('Checkout') {
